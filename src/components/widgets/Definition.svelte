@@ -30,6 +30,7 @@
 </script>
 
 <div class="def">
+  {#if definition}
 		<h2>{definition[0]}</h2>
 		<em>{pos[definition[1]] || ''}</em>
 		<ol>
@@ -37,6 +38,7 @@
 				<li>{def}</li>
 			{/each}
 		</ol>
+  {/if}
 </div>
 
 <style>
