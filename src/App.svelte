@@ -15,7 +15,7 @@
 	import { Toaster } from "./components/widgets";
 	import { setContext } from "svelte";
 
-	document.title = "Wordle+ | An infinite word guessing game";
+	document.title = "Jèrridle | An Jèrriais word guessing game";
 </script>
 
 <script lang="ts">
@@ -24,6 +24,7 @@
 	localStorage.setItem("version", version);
 	let stats: Stats;
 	let word: string;
+  let definition: [string,string,string];
 	let state: GameState;
 	let toaster: Toaster;
 
@@ -45,7 +46,9 @@
 		localStorage.setItem("mode", `${m}`);
 		window.location.hash = GameMode[m];
 		stats = new Stats(localStorage.getItem(`stats-${m}`) || m);
-		word = words.words[seededRandomInt(0, words.words.length, modeData.modes[m].seed)];
+    const index = seededRandomInt(0, words.words.length, modeData.modes[m].seed);
+		word = words.words[index];
+    definition = words.source[index];
 		if (modeData.modes[m].historical) {
 			state = new GameState(m, localStorage.getItem(`state-${m}-h`));
 		} else {
@@ -67,5 +70,5 @@
 
 <Toaster bind:this={toaster} />
 {#if toaster}
-	<Game {stats} bind:word {toaster} bind:game={state} />
+	<Game {stats} bind:word bind:definition {toaster} bind:game={state} />
 {/if}

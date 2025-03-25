@@ -1,44 +1,42 @@
 <script context="module" lang="ts">
-	const cache = new Map<string, Promise<DictionaryEntry>>();
+  import { words } from '../../utils';
+
+	const pos = {
+    '(n)': 'noun',
+    '(v)': 'verb',
+    '(adj)': 'adjective',
+    '(pp)': 'past participle',
+    '(adv)': 'adverb',
+    '(int)': 'interjection',
+    '(conj)': 'conjunction',
+    '(interr)': 'interrogative',
+    '(part)': 'participle',
+    '(prep)': 'preposition',
+    '(pron)': 'pronoun',
+  };
 </script>
 
 <script lang="ts">
-	export let word: string;
+  export let word: string | undefined;
+  export let definition: [string,string,string];
 	/** The maximum number of alternate definitions to provide*/
 	export let alternates = 9;
 
-	async function getWordData(word: string): Promise<DictionaryEntry> {
-		if (!cache.has(word)) {
-			const data = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`, {
-				mode: "cors",
-			});
-			if (data.ok) {
-				cache.set(word, (await data.json())[0]);
-			} else {
-				throw new Error(`Failed to fetch definition`);
-			}
-		}
-		return cache.get(word);
-	}
+  $: {
+    if (word && !definition) {
+      definition = words.source[words.words.findIndex(w => word === w)];
+    }
+  };
 </script>
 
 <div class="def">
-	{#await getWordData(word)}
-		<h4>Fetching definition...</h4>
-	{:then data}
-		<h2>{word}</h2>
-		<em>{data.meanings[0].partOfSpeech}</em>
+		<h2>{definition[0]}</h2>
+		<em>{pos[definition[1]] || ''}</em>
 		<ol>
-			{#if word !== data.word}
-				<li>variant of {data.word}.</li>
-			{/if}
-			{#each data.meanings[0].definitions.slice(0, 1 + alternates - (word !== data.word ? 1 : 0)) as def}
-				<li>{def.definition}</li>
+			{#each definition[2].split(';') as def}
+				<li>{def}</li>
 			{/each}
 		</ol>
-	{:catch}
-		<div>Your word was <strong>{word}</strong>. (failed to fetch definition)</div>
-	{/await}
 </div>
 
 <style>
@@ -52,9 +50,6 @@
 	}
 	li {
 		margin-bottom: 0.5rem;
-	}
-	li::first-letter {
-		text-transform: uppercase;
 	}
 	li::marker {
 		color: var(--fg-secondary);

@@ -6,7 +6,7 @@
 </script>
 
 <h3>how to play</h3>
-<div>Guess the <strong>WORDLE</strong> in {ROWS} tries.</div>
+<div>Guess the <strong>Jèrridle</strong> in {ROWS} tries.</div>
 <div>Each guess must be a valid {COLS} letter word. Hit the enter button to submit.</div>
 <div>
 	After each guess, the color of the tiles will change to show how close your guess was to the
@@ -52,6 +52,8 @@
 	<br />
 	Written with Svelte, in Typescript by
 	<a href="https://github.com/MikhaD" target="_blank" rel="noreferrer">MikhaD</a>.
+  <br /><br />
+  Jèrriais translation by <a href="https://github.com/jerriais-tech" target="_blank" rel="noreferrer">Jèrriais.Tech</a>.
 </div>
 
 <style lang="scss">
