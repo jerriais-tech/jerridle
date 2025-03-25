@@ -12,7 +12,7 @@
 		navigator.clipboard.writeText(
 			`${modeData.modes[$mode].name} Jèrridle #${state.wordNumber} ${
 				failed(state) ? "X" : state.guesses
-			}/${state.board.words.length}\n\n    ${state.board.state
+			}/${state.board.words.length}\n    ${state.board.state
 				.slice(0, state.guesses)
 				.map((r) => r.join(""))
 				.join("\n    ")}\nhttps://jerriais-tech.github.io/jerridle`

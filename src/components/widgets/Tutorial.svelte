@@ -7,10 +7,13 @@
 
 <h3>how to play</h3>
 <div>Guess the <strong>Jèrridle</strong> in {ROWS} tries.</div>
-<div>Each guess must be a valid {COLS} letter word. Hit the enter button to submit.</div>
+<div>Each guess must be a valid {COLS} letter Jèrriais word. Hit the enter button to submit.</div>
 <div>
 	After each guess, the color of the tiles will change to show how close your guess was to the
 	word.
+</div>
+<div>
+  Enter the word without any accents or apostrophes. For example, to guess the word <em>r'bâti</em> enter RBATI.
 </div>
 <div class:complete={visible} class="examples">
 	<div><strong>Examples</strong></div>
