@@ -15,7 +15,7 @@
 	import { Toaster } from "./components/widgets";
 	import { setContext } from "svelte";
 
-	document.title = "Jèrridle | An Jèrriais word guessing game";
+	document.title = "Jèrridle | A Jèrriais word guessing game";
 </script>
 
 <script lang="ts">
