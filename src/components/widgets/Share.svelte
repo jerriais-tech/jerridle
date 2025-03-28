@@ -15,7 +15,7 @@
 			}/${state.board.words.length}\n    ${state.board.state
 				.slice(0, state.guesses)
 				.map((r) => r.join(""))
-				.join("\n    ")}\nhttps://jerriais-tech.github.io/jerridle`
+				.join("\n    ")}\nhttps://jerriais.tech/jerridle`
 		);
 		toaster.pop("Copied");
 	}

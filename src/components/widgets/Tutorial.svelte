@@ -56,7 +56,7 @@
 	Written with Svelte, in Typescript by
 	<a href="https://github.com/MikhaD" target="_blank" rel="noreferrer">MikhaD</a>.
   <br /><br />
-  Jèrriais translation by <a href="https://github.com/jerriais-tech" target="_blank" rel="noreferrer">Jèrriais.Tech</a>.
+  Jèrriais translation by <a href="https://jerriais.tech/" target="_blank" rel="noreferrer">Jèrriais.Tech</a>.
 </div>
 
 <style lang="scss">
