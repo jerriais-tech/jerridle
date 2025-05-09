@@ -1763,7 +1763,7 @@ const words: Words = {
     "zebre",
     "ziper",
     "zoner",
-  ],
+  ].map((x) => x.toLowerCase()),
   source: [
     ["abats (mpl)", "(n)", "offal"],
     ["abcès (m)", "(n)", "abscess"],
